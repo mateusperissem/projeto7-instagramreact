@@ -2,22 +2,22 @@ import React from 'react';
 
 
 export default function Icone(props) {
-  const [outline,setOutline] = React.useState("-outline")
-  const [style, setStyle] = React.useState("black");
+  let outline = "-outline";
+  let colorStyle = "";
 
-  function toggleLike(){
-    if (outline === "-outline"){
-      setStyle("red");
-      setOutline("");
-
-    } else{
-      setOutline("-outline");
-      setStyle("black");
-    }
-  }
   if (props.name == "heart"){
-    return <ion-icon name={props.name + outline} onClick= {toggleLike} style={{color:style}}></ion-icon>;
-  }
+    if (props.liked){
+      outline = "";
+      colorStyle = "red";
+    }else{
+      outline = "-outline";
+      colorStyle = "";
+
+    }  
+    return <ion-icon name={props.name+outline} onClick= {props.toggleLike} style={{color:colorStyle}}></ion-icon>;
+
+    }
+
   return <ion-icon name={props.name} ></ion-icon>;
 
 
